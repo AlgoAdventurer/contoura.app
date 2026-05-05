@@ -163,13 +163,18 @@
       position: relative;
       display: flex; justify-content: center;
     }
+    .laptop-mockup {
+      width: 100%;
+      max-width: 520px;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 40px 80px rgba(0,0,0,.65));
+      border-radius: 10px;
+    }
     .mock-shell::before {
-      content: '';
-      position: absolute;
-      top: -60px; left: 50%; transform: translateX(-50%);
-      width: 320px; height: 320px; border-radius: 50%;
-      background: radial-gradient(ellipse, rgba(110,229,122,.055) 0%, transparent 70%);
-      pointer-events: none;
+      width: 520px;
+      height: 320px;
+      background: radial-gradient(ellipse, rgba(110,229,122,.06) 0%, transparent 70%);
     }
     .phone {
       width: 248px; height: 498px;
@@ -500,67 +505,9 @@
         <p class="hero-note">No app required during beta — we'll reach out personally.</p>
       </div>
 
-      <!-- phone mockup -->
+      <!-- laptop mockup image -->
       <div class="mock-shell">
-        <div class="phone">
-          <div class="phone-bar"><div class="phone-notch"></div></div>
-          <div class="phone-screen">
-
-            <div class="ph-row">
-              <div class="ph-card">
-                <div class="ph-lbl">This week</div>
-                <div class="ph-val">62 km</div>
-              </div>
-              <div class="ph-card">
-                <div class="ph-lbl">Last race</div>
-                <div class="ph-val green">#4</div>
-              </div>
-            </div>
-
-            <div class="ph-chart">
-              <div class="ph-lbl">Monthly distance</div>
-              <div class="ph-bars">
-                <div class="ph-bar" style="height:40%;animation-delay:.07s"></div>
-                <div class="ph-bar" style="height:56%;animation-delay:.12s"></div>
-                <div class="ph-bar" style="height:48%;animation-delay:.17s"></div>
-                <div class="ph-bar" style="height:74%;animation-delay:.22s"></div>
-                <div class="ph-bar" style="height:62%;animation-delay:.27s"></div>
-                <div class="ph-bar" style="height:88%;animation-delay:.32s"></div>
-              </div>
-            </div>
-
-            <div class="ph-race">
-              <div class="ph-race-top">
-                <div class="ph-race-name">Sprint National — Final</div>
-                <div class="ph-race-rank">Rank 4</div>
-              </div>
-              <div class="ph-race-sub">42:18 · Time loss +4.2% · 14 controls</div>
-            </div>
-
-            <div class="ph-card" style="background:var(--ink-2)">
-              <div class="ph-lbl">Split analysis</div>
-              <div class="ph-splits" style="margin-top:.3rem">
-                <div class="ph-split-row">
-                  <div class="ph-split-lbl">1</div>
-                  <div class="ph-split-track"><div class="ph-split-fill ph-split-good" style="width:78%"></div></div>
-                </div>
-                <div class="ph-split-row">
-                  <div class="ph-split-lbl">2</div>
-                  <div class="ph-split-track"><div class="ph-split-fill" style="width:55%"></div></div>
-                </div>
-                <div class="ph-split-row">
-                  <div class="ph-split-lbl">3</div>
-                  <div class="ph-split-track"><div class="ph-split-fill ph-split-bad" style="width:90%"></div></div>
-                </div>
-                <div class="ph-split-row">
-                  <div class="ph-split-lbl">4</div>
-                  <div class="ph-split-track"><div class="ph-split-fill ph-split-good" style="width:42%"></div></div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
+        <img src="laptop-mockup.png" alt="Contoura Web App on laptop" class="laptop-mockup" />
       </div>
 
     </div>
@@ -754,7 +701,7 @@
 
           <!-- ⚠️ Replace YOUR_FORM_ID with your Formspree form ID -->
           <form id="onboarding-form"
-                action="https://formspree.io/f/YOUR_FORM_ID"
+                action="https://formspree.io/f/xojrdgpg"
                 method="POST">
 
             <div class="f-row">
