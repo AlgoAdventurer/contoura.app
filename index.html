@@ -12,25 +12,23 @@
     /* ─── Reset ─────────────────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-
     /* ─── Tokens — Obsidian palette ─────────────────────────────────────── */
     :root {
-      --ink:        #0c0c0d;   /* page background   */
-      --ink-1:      #111113;   /* cards / surfaces  */
-      --ink-2:      #17171a;   /* elevated / inputs */
-      --ink-3:      #1f1f23;   /* hover surfaces    */
+      --ink:        #0c0c0d;
+      --ink-1:      #111113;
+      --ink-2:      #17171a;
+      --ink-3:      #1f1f23;
       --line:       rgba(255,255,255,.055);
       --line-mid:   rgba(255,255,255,.10);
-      --text:       #f0efe9;   /* primary text      */
-      --muted:      #5e5d54;   /* secondary text    */
-      --dim:        #3a3933;   /* very muted        */
-      --spark:      #6ee57a;   /* ONLY accent — green spark */
+      --text:       #f0efe9;
+      --muted:      #5e5d54;
+      --dim:        #3a3933;
+      --spark:      #6ee57a;
       --spark-dim:  rgba(110,229,122,.12);
       --spark-line: rgba(110,229,122,.22);
       --r:          14px;
       --r-sm:       8px;
     }
-
     /* ─── Base ───────────────────────────────────────────────────────────── */
     body {
       font-family: 'Inter', system-ui, sans-serif;
@@ -46,10 +44,8 @@
     h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
     h3 { font-size: .98rem; font-weight: 600; }
     p  { color: var(--muted); }
-
     .wrap { max-width: 1040px; margin: 0 auto; padding: 0 1.5rem; }
     .section { padding: 96px 0; }
-
     /* ─── Nav ────────────────────────────────────────────────────────────── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 50;
@@ -66,7 +62,6 @@
       color: var(--text); letter-spacing: -.05em;
     }
     .logo span { color: var(--spark); }
-
     .nav-right { display: flex; align-items: center; gap: .75rem; }
     .nav-link {
       font-size: .82rem; color: var(--muted);
@@ -75,7 +70,6 @@
     }
     @media(min-width:640px){ .nav-link { display: block; } }
     .nav-link:hover { color: var(--text); }
-
     .btn-nav {
       background: var(--spark); color: #0c0c0d;
       border: none; border-radius: var(--r-sm);
@@ -84,7 +78,6 @@
       transition: opacity .15s;
     }
     .btn-nav:hover { opacity: .88; }
-
     /* ─── Hero ───────────────────────────────────────────────────────────── */
     .hero {
       padding: 148px 0 88px;
@@ -95,7 +88,6 @@
       gap: 4rem;
       align-items: center;
     }
-
     /* badge */
     .badge {
       display: inline-flex; align-items: center; gap: .45rem;
@@ -111,18 +103,14 @@
       width: 5px; height: 5px; border-radius: 50%;
       background: var(--spark); flex-shrink: 0;
     }
-
     .hero h1 { color: var(--text); margin-bottom: 1.2rem; }
     .hero h1 em { font-style: normal; color: var(--spark); }
-
     .hero-sub {
       font-size: 1.05rem; color: var(--muted);
       max-width: 440px; margin-bottom: 2.2rem;
       line-height: 1.7;
     }
-
     .hero-cta { display: flex; gap: .75rem; flex-wrap: wrap; }
-
     .btn-primary {
       display: inline-block;
       background: var(--spark); color: #0c0c0d;
@@ -133,7 +121,6 @@
       transition: opacity .15s, transform .15s;
     }
     .btn-primary:hover { opacity: .88; transform: translateY(-1px); }
-
     .btn-ghost {
       display: inline-block;
       background: transparent; color: var(--muted);
@@ -145,7 +132,6 @@
       transition: border-color .18s, color .18s;
     }
     .btn-ghost:hover { border-color: rgba(255,255,255,.2); color: var(--text); }
-
     /* hero notice */
     .hero-note {
       display: flex; align-items: center; gap: .5rem;
@@ -158,113 +144,69 @@
       background: var(--dim);
     }
 
-		/* ─── Laptop mockup ───────────────────────────────────────────── */
-		.mock-shell {
-		  position: relative;
-		  display: flex;
-		  justify-content: center;
-		  align-items: center;
-		  overflow: visible;
-		}
-
-		.laptop-mockup {
-		  width: 135%;
-		  max-width: none;
-		  height: auto;
-
-		  transform: translate(6%, 4%);
-
-		  filter:
-		    drop-shadow(0 60px 120px rgba(0,0,0,.9))
-		    drop-shadow(0 0 80px rgba(110,229,122,.10));
-		}
-
-		/* green ambient glow */
-		.mock-shell::before {
-		  content: '';
-		  position: absolute;
-		  top: 50%;
-		  left: 50%;
-		  transform: translate(-50%, -50%);
-
-		  width: 720px;
-		  height: 420px;
-		  border-radius: 50%;
-
-		  background: radial-gradient(
-		    ellipse,
-		    rgba(110,229,122,0.10) 0%,
-		    rgba(110,229,122,0.04) 40%,
-		    transparent 75%
-		  );
-
-		  pointer-events: none;
-		  z-index: 0;
-		}
-
-		/* soft fade into background */
-		.mock-shell::after {
-		  content: '';
-		  position: absolute;
-		  inset: 0;
-
-		  background: radial-gradient(
-		    ellipse at center,
-		    rgba(12,12,13,0) 55%,
-		    rgba(12,12,13,0.35) 75%,
-		    rgba(12,12,13,0.75) 100%
-		  );
-
-		  pointer-events: none;
-		  z-index: 2;
-		}
-
-		/* ensure image stays above glow */
-		.laptop-mockup {
-		  position: relative;
-		  z-index: 1;
-		}
-
-    /* phone cards */
-    .ph-row { display: grid; grid-template-columns: 1fr 1fr; gap: .45rem; }
-    .ph-card {
-      background: var(--ink-2); border: 1px solid var(--line);
-      border-radius: 9px; padding: .65rem;
+    /* ─── Laptop mockup ───────────────────────────────────────────── */
+    .mock-shell {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: visible;
     }
-    .ph-lbl { font-size: .56rem; color: var(--muted); font-weight: 500; letter-spacing: .04em; text-transform: uppercase; margin-bottom: .25rem; }
-    .ph-val { font-size: 1.05rem; font-weight: 700; color: var(--text); letter-spacing: -.03em; }
-    .ph-val.green { color: var(--spark); }
 
-    /* bar chart */
-    .ph-chart { background: var(--ink-2); border: 1px solid var(--line); border-radius: 9px; padding: .65rem; }
-    .ph-bars { display: flex; align-items: flex-end; gap: 3px; height: 52px; margin-top: .4rem; }
-    .ph-bar {
-      flex: 1; background: var(--spark); border-radius: 2px 2px 0 0; opacity: .65;
-      animation: rise .9s cubic-bezier(.22,1,.36,1) both;
-      transform-origin: bottom;
+    /* green ambient glow behind the laptop */
+    .mock-shell::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-45%, -50%);
+      width: 820px;
+      height: 480px;
+      border-radius: 50%;
+      background: radial-gradient(
+        ellipse,
+        rgba(110,229,122,0.12) 0%,
+        rgba(110,229,122,0.05) 40%,
+        transparent 72%
+      );
+      pointer-events: none;
+      z-index: 0;
     }
-    @keyframes rise { from { transform: scaleY(0); } to { transform: scaleY(1); } }
 
-    /* race card */
-    .ph-race {
-      background: var(--ink-2); border: 1px solid var(--line);
-      border-radius: 9px; padding: .65rem;
-    }
-    .ph-race-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: .25rem; }
-    .ph-race-name { font-size: .63rem; font-weight: 600; color: var(--text); }
-    .ph-race-rank { font-size: .63rem; font-weight: 700; color: var(--spark); }
-    .ph-race-sub  { font-size: .56rem; color: var(--muted); }
+    .laptop-mockup {
+      /* larger than before */
+      width: 155%;
+      max-width: none;
+      height: auto;
+      transform: translate(6%, 4%);
+      position: relative;
+      z-index: 1;
 
-    /* split bars */
-    .ph-splits { display: flex; flex-direction: column; gap: 3px; }
-    .ph-split-row { display: flex; align-items: center; gap: 5px; }
-    .ph-split-lbl { font-size: .52rem; color: var(--dim); width: 12px; text-align: right; }
-    .ph-split-track {
-      flex: 1; height: 4px; background: var(--ink-3); border-radius: 2px; overflow: hidden;
+      /* depth shadow */
+      filter:
+        drop-shadow(0 60px 120px rgba(0,0,0,.9))
+        drop-shadow(0 0 80px rgba(110,229,122,.10));
+
+      /*
+        Smooth dissolve into the background on all sides.
+        The mask fades from fully opaque in the centre to
+        transparent at the edges — no hard cutoff, no colour mismatch.
+      */
+      -webkit-mask-image: radial-gradient(
+        ellipse 80% 78% at 52% 48%,
+        black          25%,
+        rgba(0,0,0,.9) 45%,
+        rgba(0,0,0,.5) 62%,
+        transparent    80%
+      );
+      mask-image: radial-gradient(
+        ellipse 80% 78% at 52% 48%,
+        black          25%,
+        rgba(0,0,0,.9) 45%,
+        rgba(0,0,0,.5) 62%,
+        transparent    80%
+      );
     }
-    .ph-split-fill { height: 100%; border-radius: 2px; background: var(--spark); opacity: .6; }
-    .ph-split-good { background: #4ade80; opacity: .55; }
-    .ph-split-bad  { background: #e57c6e; opacity: .55; }
 
     /* ─── Divider strip ──────────────────────────────────────────────────── */
     .divider-strip {
@@ -289,12 +231,10 @@
     }
     .strip-num em { font-style: normal; color: var(--spark); }
     .strip-lbl { font-size: .75rem; color: var(--muted); margin-top: .35rem; }
-
     /* ─── Features ───────────────────────────────────────────────────────── */
     .feat-head { margin-bottom: 3rem; }
     .feat-head h2 { color: var(--text); margin-bottom: .65rem; }
     .feat-head p { max-width: 480px; font-size: .97rem; }
-
     .feat-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -317,7 +257,6 @@
     }
     .feat-cell h3 { color: var(--text); margin-bottom: .45rem; }
     .feat-cell p  { font-size: .84rem; line-height: 1.6; }
-
     /* ─── How it works ───────────────────────────────────────────────────── */
     .steps-wrap {
       border: 1px solid var(--line);
@@ -348,11 +287,9 @@
     }
     .step h3 { font-size: .9rem; color: var(--text); margin-bottom: .4rem; }
     .step p  { font-size: .8rem; line-height: 1.55; }
-
     /* ─── Testimonials ───────────────────────────────────────────────────── */
     .testi-head { margin-bottom: 2.5rem; }
     .testi-head h2 { color: var(--text); }
-
     .testi-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -376,7 +313,6 @@
     }
     .testi-name { font-size: .8rem; font-weight: 600; color: var(--text); }
     .testi-club { font-size: .72rem; color: var(--muted); }
-
     /* ─── Waitlist section ───────────────────────────────────────────────── */
     .waitlist-inner {
       display: grid;
@@ -386,7 +322,6 @@
     }
     .waitlist-left h2 { color: var(--text); margin-bottom: .9rem; }
     .waitlist-left p  { font-size: .95rem; line-height: 1.7; margin-bottom: 1.75rem; }
-
     .waitlist-proof { display: flex; flex-direction: column; gap: .75rem; }
     .proof-item { display: flex; align-items: flex-start; gap: .65rem; }
     .proof-dot {
@@ -394,7 +329,6 @@
       background: var(--spark); margin-top: .5rem; flex-shrink: 0;
     }
     .proof-text { font-size: .84rem; color: var(--muted); line-height: 1.5; }
-
     /* form */
     .form-card {
       background: var(--ink-1);
@@ -440,7 +374,6 @@
     .f-group input::placeholder { color: var(--dim); }
     .f-group select option { background: var(--ink-2); color: var(--text); }
     .f-group select option[value=""] { color: var(--muted); }
-
     .btn-submit {
       width: 100%;
       background: var(--spark); color: #0c0c0d;
@@ -452,18 +385,15 @@
       transition: opacity .15s, transform .12s;
     }
     .btn-submit:hover { opacity: .88; transform: translateY(-1px); }
-
     .form-fine {
       text-align: center;
       font-size: .7rem; color: var(--dim);
       margin-top: .75rem;
     }
-
     /* success */
     #form-success { display: none; text-align: center; padding: 1.5rem 0; }
     #form-success h3 { font-size: 1.1rem; color: var(--spark); margin-bottom: .5rem; }
     #form-success p  { font-size: .88rem; }
-
     /* ─── Footer ─────────────────────────────────────────────────────────── */
     footer {
       border-top: 1px solid var(--line);
@@ -480,7 +410,6 @@
     .foot-links a { font-size: .78rem; color: var(--muted); transition: color .15s; }
     .foot-links a:hover { color: var(--text); }
     .foot-copy { font-size: .74rem; color: var(--dim); }
-
     /* ─── Responsive ─────────────────────────────────────────────────────── */
     @media (max-width: 860px) {
       .hero-inner    { grid-template-columns: 1fr; }
@@ -500,7 +429,6 @@
   </style>
 </head>
 <body>
-
 <!-- ── NAV ──────────────────────────────────────────────────────────────── -->
 <nav>
   <div class="nav-inner">
@@ -511,12 +439,10 @@
     </div>
   </div>
 </nav>
-
 <!-- ── HERO ─────────────────────────────────────────────────────────────── -->
 <section class="hero">
   <div class="wrap">
     <div class="hero-inner">
-
       <div>
         <div class="badge">
           <span class="badge-dot"></span>
@@ -534,16 +460,13 @@
         </div>
         <p class="hero-note">No app required during beta — we'll reach out personally.</p>
       </div>
-
       <!-- laptop mockup image -->
       <div class="mock-shell">
         <img src="laptop-mockup.png" alt="Contoura Web App on laptop" class="laptop-mockup" />
       </div>
-
     </div>
   </div>
 </section>
-
 <!-- ── STRIP ─────────────────────────────────────────────────────────────── -->
 <div class="divider-strip">
   <div class="strip-inner wrap">
@@ -565,7 +488,6 @@
     </div>
   </div>
 </div>
-
 <!-- ── FEATURES ──────────────────────────────────────────────────────────── -->
 <section class="section" id="features">
   <div class="wrap">
@@ -573,49 +495,40 @@
       <h2>Everything in one place.</h2>
       <p>From your first session of the season to the post-race debrief — Contoura keeps every detail organised and ready to act on.</p>
     </div>
-
     <div class="feat-grid">
-
       <div class="feat-cell">
         <div class="feat-num">01</div>
         <h3>Training Log</h3>
         <p>Record every session — distance, elevation, map, and a 7-dimension quality rating covering technique, physical, mental, and more.</p>
       </div>
-
       <div class="feat-cell">
         <div class="feat-num">02</div>
         <h3>Competition Analysis</h3>
         <p>Import your race results and get an instant deep dive — split-by-split breakdowns, performance index, error density, and quarter-course statistics.</p>
       </div>
-
       <div class="feat-cell">
         <div class="feat-num">03</div>
         <h3>Race Preparation</h3>
         <p>Define your goals, upload course documents, note the race centre, and build a pre-race schedule — all linked to a single competition entry.</p>
       </div>
-
       <div class="feat-cell">
         <div class="feat-num">04</div>
         <h3>Statistics Dashboard</h3>
         <p>Monthly distance trends, rating developments, ranking progressions, training streaks — visualised and updated automatically, no manual work.</p>
       </div>
-
       <div class="feat-cell">
         <div class="feat-num">05</div>
         <h3>Training Planner</h3>
         <p>Drag-and-drop monthly calendar with colour-coded session types, weekly load targets, and an actual vs. planned comparison view.</p>
       </div>
-
       <div class="feat-cell">
         <div class="feat-num">06</div>
         <h3>Livelox Integration</h3>
         <p>Attach GPS track links to any training or race entry and review your route choices directly alongside your written evaluation.</p>
       </div>
-
     </div>
   </div>
 </section>
-
 <!-- ── HOW IT WORKS ───────────────────────────────────────────────────────── -->
 <section class="section" style="padding-top:0">
   <div class="wrap">
@@ -648,58 +561,10 @@
     </div>
   </div>
 </section>
-
-<!-- ── TESTIMONIALS ───────────────────────────────────────────────────────── -->
-<!--
-<section class="section" style="padding-top:0">
-  <div class="wrap">
-    <div class="testi-head">
-      <h2>What orienteers are saying.</h2>
-    </div>
-    <div class="testi-grid">
-      <div class="testi">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-quote">"Finally an app that speaks orienteering. The split analysis alone saved me weeks of spreadsheet work."</p>
-        <div class="testi-author">
-          <div class="testi-av">LM</div>
-          <div>
-            <div class="testi-name">Lukas M.</div>
-            <div class="testi-club">OLG Säuliamt · M21E</div>
-          </div>
-        </div>
-      </div>
-      <div class="testi">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-quote">"The performance statistics give me a clear picture of where I lose time. I've never had this visibility before."</p>
-        <div class="testi-author">
-          <div class="testi-av">SR</div>
-          <div>
-            <div class="testi-name">Sara R.</div>
-            <div class="testi-club">OL Regio Basel · W20</div>
-          </div>
-        </div>
-      </div>
-      <div class="testi">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-quote">"The training planner with load tracking is exactly what I needed to stay consistent without overtraining."</p>
-        <div class="testi-author">
-          <div class="testi-av">JP</div>
-          <div>
-            <div class="testi-name">Jonas P.</div>
-            <div class="testi-club">OLC Omis · M18</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
--->
-
 <!-- ── WAITLIST ───────────────────────────────────────────────────────────── -->
 <section class="section" id="waitlist">
   <div class="wrap">
     <div class="waitlist-inner">
-
       <div class="waitlist-left">
         <h2>Join the waitlist.</h2>
         <p>
@@ -724,16 +589,12 @@
           </div>
         </div>
       </div>
-
       <div>
         <div class="form-card">
           <div class="form-title">Waitlist</div>
-
-          <!-- ⚠️ Replace YOUR_FORM_ID with your Formspree form ID -->
           <form id="onboarding-form"
                 action="https://formspree.io/f/xojrdgpg"
                 method="POST">
-
             <div class="f-row">
               <div class="f-group">
                 <label for="name">Name</label>
@@ -744,7 +605,6 @@
                 <input type="email" id="email" name="email" placeholder="you@example.com" required />
               </div>
             </div>
-
             <div class="f-row">
               <div class="f-group">
                 <label for="role">Role in orienteering</label>
@@ -769,14 +629,10 @@
                 </select>
               </div>
             </div>
-
             <input type="hidden" name="_subject" value="New Contoura Waitlist Signup" />
-
             <button type="submit" class="btn-submit">Join the Waitlist →</button>
             <p class="form-fine">No spam. We'll only contact you about Contoura.</p>
-
           </form>
-
           <div id="form-success">
             <div style="font-size:1.8rem;margin-bottom:.75rem">✦</div>
             <h3>You're on the waitlist.</h3>
@@ -784,11 +640,9 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
-
 <!-- ── FOOTER ─────────────────────────────────────────────────────────────── -->
 <footer>
   <div class="foot-inner">
@@ -801,11 +655,9 @@
     <p class="foot-copy">© 2026 Contoura</p>
   </div>
 </footer>
-
 <script>
   const form = document.getElementById('onboarding-form');
   const success = document.getElementById('form-success');
-
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const btn = form.querySelector('.btn-submit');
