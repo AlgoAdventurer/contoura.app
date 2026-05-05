@@ -1,0 +1,960 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contoura - Orienteering Training, Racing & Analysis</title>
+    <meta
+      name="description"
+      content="Contoura is an early orienteering training, race preparation and performance analysis app. Join the onboarding list."
+    />
+    <meta property="og:title" content="Contoura - Plan, race and analyze orienteering with clarity" />
+    <meta
+      property="og:description"
+      content="An orienteering app for training planning, race preparation, o-l.ch data, Livelox links and meaningful analysis in one place."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://contoura.app" />
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #17211f;
+        --muted: #5c6965;
+        --line: #dbe3df;
+        --paper: #f7f6f0;
+        --panel: #ffffff;
+        --forest: #1f6a4d;
+        --forest-dark: #124331;
+        --lime: #b7dc56;
+        --amber: #f2b84b;
+        --coral: #e56b5f;
+        --sky: #407a9f;
+        --violet: #66519d;
+        --shadow: 0 24px 70px rgba(23, 33, 31, 0.14);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        line-height: 1.5;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        min-height: 72px;
+        padding: 16px clamp(20px, 5vw, 64px);
+        border-bottom: 1px solid rgba(219, 227, 223, 0.76);
+        background: rgba(247, 246, 240, 0.9);
+        backdrop-filter: blur(16px);
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 800;
+        text-decoration: none;
+      }
+
+      .brand-mark {
+        display: grid;
+        place-items: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        background: var(--forest);
+        color: white;
+        font-size: 21px;
+        line-height: 1;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .nav a {
+        text-decoration: none;
+      }
+
+      .button,
+      button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        padding: 0 18px;
+        border: 0;
+        border-radius: 8px;
+        background: var(--forest);
+        color: white;
+        font: inherit;
+        font-weight: 750;
+        text-decoration: none;
+        cursor: pointer;
+        transition:
+          transform 0.16s ease,
+          box-shadow 0.16s ease,
+          background 0.16s ease;
+      }
+
+      .button:hover,
+      button:hover {
+        transform: translateY(-1px);
+        background: var(--forest-dark);
+        box-shadow: 0 12px 30px rgba(31, 106, 77, 0.24);
+      }
+
+      .button.secondary {
+        border: 1px solid var(--line);
+        background: white;
+        color: var(--ink);
+      }
+
+      .hero {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 0.92fr) minmax(420px, 1.08fr);
+        gap: clamp(32px, 5vw, 72px);
+        min-height: calc(100svh - 72px);
+        padding: clamp(48px, 7vw, 92px) clamp(20px, 5vw, 64px) 56px;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at 76% 16%, rgba(183, 220, 86, 0.26), transparent 30%),
+          linear-gradient(125deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0));
+        pointer-events: none;
+      }
+
+      .hero-copy,
+      .product-visual {
+        position: relative;
+        z-index: 1;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin: 0 0 18px;
+        color: var(--forest-dark);
+        font-size: 13px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 30px;
+        height: 3px;
+        border-radius: 999px;
+        background: var(--lime);
+      }
+
+      h1 {
+        max-width: 760px;
+        margin: 0;
+        font-size: clamp(42px, 6.6vw, 88px);
+        line-height: 0.95;
+        letter-spacing: 0;
+      }
+
+      .lead {
+        max-width: 650px;
+        margin: 26px 0 0;
+        color: var(--muted);
+        font-size: clamp(18px, 2.1vw, 23px);
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 32px;
+      }
+
+      .quick-stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        max-width: 620px;
+        margin-top: 42px;
+      }
+
+      .stat {
+        min-height: 92px;
+        padding: 18px;
+        border: 1px solid rgba(219, 227, 223, 0.86);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.7);
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 24px;
+        line-height: 1.1;
+      }
+
+      .stat span {
+        display: block;
+        margin-top: 7px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .product-visual {
+        align-self: center;
+      }
+
+      .app-frame {
+        position: relative;
+        width: min(100%, 760px);
+        min-height: 560px;
+        padding: 18px;
+        border: 1px solid rgba(23, 33, 31, 0.1);
+        border-radius: 18px;
+        background:
+          linear-gradient(rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.92)),
+          url("data:image/svg+xml,%3Csvg width='900' height='680' viewBox='0 0 900 680' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%2397b2a8' stroke-width='2' opacity='.55'%3E%3Cpath d='M-60 108C80 50 164 151 297 101s189-9 278 28 207 3 373-82'/%3E%3Cpath d='M-40 180C83 118 160 207 294 163s196-18 286 28 210 29 356-51'/%3E%3Cpath d='M-55 257C78 198 176 270 303 236s200-35 286 25 213 60 347-7'/%3E%3Cpath d='M-45 337C74 276 183 343 301 311s211-47 292 22 210 91 344 36'/%3E%3Cpath d='M-40 422C88 364 176 414 309 383s211-57 293 14 198 126 338 82'/%3E%3Cpath d='M-51 512C75 451 181 499 318 470s205-66 289 1 190 143 330 108'/%3E%3Cpath d='M-50 604C87 546 187 579 324 552s207-76 298-12 177 151 314 128'/%3E%3C/g%3E%3Cpath d='M116 458C211 353 287 296 395 282c90-12 136-75 195-141' fill='none' stroke='%23e56b5f' stroke-width='12' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='116' cy='458' r='17' fill='%23fff' stroke='%23e56b5f' stroke-width='9'/%3E%3Ccircle cx='395' cy='282' r='17' fill='%23fff' stroke='%23e56b5f' stroke-width='9'/%3E%3Ccircle cx='590' cy='141' r='17' fill='%23fff' stroke='%23e56b5f' stroke-width='9'/%3E%3C/svg%3E");
+        background-size: cover;
+        box-shadow: var(--shadow);
+      }
+
+      .frame-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        min-height: 46px;
+        padding: 0 12px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.82);
+      }
+
+      .frame-title {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        font-weight: 800;
+      }
+
+      .signal {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--lime);
+        box-shadow: 0 0 0 5px rgba(183, 220, 86, 0.24);
+      }
+
+      .pill {
+        padding: 7px 10px;
+        border-radius: 999px;
+        background: rgba(31, 106, 77, 0.09);
+        color: var(--forest-dark);
+        font-size: 12px;
+        font-weight: 750;
+      }
+
+      .dashboard {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        margin-top: 18px;
+      }
+
+      .panel {
+        min-height: 150px;
+        padding: 18px;
+        border: 1px solid rgba(219, 227, 223, 0.88);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.88);
+      }
+
+      .panel.wide {
+        grid-column: 1 / -1;
+      }
+
+      .panel h3 {
+        margin: 0 0 12px;
+        font-size: 15px;
+      }
+
+      .bars {
+        display: grid;
+        align-items: end;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 8px;
+        height: 92px;
+      }
+
+      .bars span {
+        border-radius: 5px 5px 2px 2px;
+        background: var(--forest);
+      }
+
+      .route-list {
+        display: grid;
+        gap: 9px;
+      }
+
+      .route-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 9px 0;
+        border-bottom: 1px solid rgba(219, 227, 223, 0.9);
+        font-size: 13px;
+      }
+
+      .route-row:last-child {
+        border-bottom: 0;
+      }
+
+      .metric-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+      }
+
+      .metric {
+        min-height: 82px;
+        padding: 12px;
+        border-radius: 8px;
+        background: rgba(247, 246, 240, 0.78);
+      }
+
+      .metric b {
+        display: block;
+        font-size: 22px;
+      }
+
+      .metric small {
+        color: var(--muted);
+      }
+
+      section {
+        padding: 78px clamp(20px, 5vw, 64px);
+      }
+
+      .section-inner {
+        max-width: 1160px;
+        margin: 0 auto;
+      }
+
+      .section-heading {
+        max-width: 760px;
+        margin-bottom: 34px;
+      }
+
+      h2 {
+        margin: 0;
+        font-size: clamp(30px, 4vw, 52px);
+        line-height: 1;
+        letter-spacing: 0;
+      }
+
+      .section-heading p {
+        margin: 16px 0 0;
+        color: var(--muted);
+        font-size: 18px;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .feature {
+        min-height: 230px;
+        padding: 24px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+      }
+
+      .icon {
+        display: grid;
+        place-items: center;
+        width: 42px;
+        height: 42px;
+        margin-bottom: 18px;
+        border-radius: 8px;
+        background: rgba(31, 106, 77, 0.1);
+        color: var(--forest);
+        font-weight: 900;
+      }
+
+      .feature h3 {
+        margin: 0 0 10px;
+        font-size: 20px;
+      }
+
+      .feature p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .workflow {
+        background: #ffffff;
+      }
+
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--line);
+      }
+
+      .step {
+        min-height: 210px;
+        padding: 24px;
+        background: white;
+      }
+
+      .step-number {
+        display: inline-grid;
+        place-items: center;
+        width: 32px;
+        height: 32px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        background: var(--ink);
+        color: white;
+        font-weight: 800;
+      }
+
+      .step h3 {
+        margin: 0 0 10px;
+        font-size: 18px;
+      }
+
+      .step p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .audience {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: clamp(24px, 5vw, 64px);
+        align-items: start;
+      }
+
+      .quote-box {
+        padding: 28px;
+        border-radius: 8px;
+        background: var(--forest-dark);
+        color: white;
+      }
+
+      .quote-box p {
+        margin: 0;
+        font-size: 24px;
+        line-height: 1.22;
+      }
+
+      .quote-box span {
+        display: block;
+        margin-top: 20px;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .audience-list {
+        display: grid;
+        gap: 12px;
+      }
+
+      .audience-item {
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.7);
+      }
+
+      .audience-item strong {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .audience-item span {
+        color: var(--muted);
+      }
+
+      .signup {
+        background: var(--ink);
+        color: white;
+      }
+
+      .signup .section-inner {
+        display: grid;
+        grid-template-columns: 0.88fr 1.12fr;
+        gap: clamp(24px, 5vw, 64px);
+        align-items: start;
+      }
+
+      .signup p {
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      form {
+        display: grid;
+        gap: 14px;
+        padding: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .field-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+
+      label {
+        display: grid;
+        gap: 7px;
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 13px;
+        font-weight: 750;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        min-height: 46px;
+        padding: 11px 12px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.96);
+        color: var(--ink);
+        font: inherit;
+      }
+
+      textarea {
+        min-height: 112px;
+        resize: vertical;
+      }
+
+      .consent {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 13px;
+        font-weight: 500;
+      }
+
+      .consent input {
+        width: 18px;
+        min-width: 18px;
+        height: 18px;
+        min-height: 18px;
+        margin-top: 2px;
+      }
+
+      .form-note {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.58);
+        font-size: 12px;
+      }
+
+      footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 28px clamp(20px, 5vw, 64px);
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      @media (max-width: 980px) {
+        .hero,
+        .audience,
+        .signup .section-inner {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          min-height: auto;
+        }
+
+        .product-visual {
+          max-width: 760px;
+        }
+
+        .feature-grid,
+        .steps {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 720px) {
+        .topbar {
+          position: static;
+        }
+
+        .nav {
+          display: none;
+        }
+
+        .quick-stats,
+        .feature-grid,
+        .steps,
+        .field-grid,
+        .dashboard,
+        .metric-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .app-frame {
+          min-height: auto;
+          padding: 12px;
+        }
+
+        .panel {
+          min-height: 128px;
+        }
+
+        section {
+          padding-block: 56px;
+        }
+
+        footer {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Contoura homepage">
+        <span class="brand-mark">C</span>
+        <span>Contoura</span>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#features">Features</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#onboarding">Onboarding</a>
+      </nav>
+      <a class="button" href="#onboarding">Early access</a>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">contoura.app</p>
+          <h1 id="hero-title">Orienteering training, racing and analysis in one system.</h1>
+          <p class="lead">
+            Contoura is built for orienteering athletes and coaches who want to plan training,
+            prepare races, collect Livelox and o-l.ch data, and turn every run into clear
+            performance insight.
+          </p>
+          <div class="hero-actions">
+            <a class="button" href="#onboarding">Join the onboarding</a>
+            <a class="button secondary" href="#features">Explore features</a>
+          </div>
+          <div class="quick-stats" aria-label="Product focus">
+            <div class="stat">
+              <strong>7</strong>
+              <span>rating categories for training and racing</span>
+            </div>
+            <div class="stat">
+              <strong>IOF</strong>
+              <span>analysis planned from results and split times</span>
+            </div>
+            <div class="stat">
+              <strong>1</strong>
+              <span>place for planning, preparation and reflection</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-visual" aria-label="Contoura product preview">
+          <div class="app-frame">
+            <div class="frame-bar">
+              <div class="frame-title"><span class="signal"></span> Race Analysis</div>
+              <span class="pill">Swiss Orienteering</span>
+            </div>
+            <div class="dashboard">
+              <div class="panel">
+                <h3>Training Load</h3>
+                <div class="bars" aria-hidden="true">
+                  <span style="height: 45%"></span>
+                  <span style="height: 64%; background: var(--sky)"></span>
+                  <span style="height: 38%; background: var(--amber)"></span>
+                  <span style="height: 78%"></span>
+                  <span style="height: 58%; background: var(--coral)"></span>
+                  <span style="height: 86%"></span>
+                  <span style="height: 52%; background: var(--violet)"></span>
+                </div>
+              </div>
+              <div class="panel">
+                <h3>Next Orienteering Sessions</h3>
+                <div class="route-list">
+                  <div class="route-row"><span>Short technical drill</span><strong>45 min</strong></div>
+                  <div class="route-row"><span>Race focus</span><strong>Middle</strong></div>
+                  <div class="route-row"><span>Open evaluations</span><strong>2</strong></div>
+                </div>
+              </div>
+              <div class="panel wide">
+                <h3>Performance Snapshot</h3>
+                <div class="metric-grid">
+                  <div class="metric"><b>93%</b><small>relative efficiency</small></div>
+                  <div class="metric"><b>1:18</b><small>mistake time / 10 min</small></div>
+                  <div class="metric"><b>+6.4%</b><small>time loss</small></div>
+                </div>
+              </div>
+              <div class="panel wide">
+                <h3>Orienteering Data Flow</h3>
+                <div class="route-list">
+                  <div class="route-row"><span>o-l.ch fixture</span><strong>Import</strong></div>
+                  <div class="route-row"><span>Livelox link</span><strong>Saved</strong></div>
+                  <div class="route-row"><span>IOF XML splits</span><strong>Ready</strong></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="features">
+        <div class="section-inner">
+          <div class="section-heading">
+            <h2>Built for the full orienteering rhythm.</h2>
+            <p>
+              The first version is designed to close the gaps between training logs, race
+              calendars, maps, result lists and personal performance analysis.
+            </p>
+          </div>
+          <div class="feature-grid">
+            <article class="feature">
+              <div class="icon">T</div>
+              <h3>Log training</h3>
+              <p>
+                Capture distance, climb, map, location, goals, actions, learnings, attachments and
+                Livelox links in a structured way.
+              </p>
+            </article>
+            <article class="feature">
+              <div class="icon">R</div>
+              <h3>Prepare races</h3>
+              <p>
+                Keep fixture details, start lists, start time, strategy, resources and results
+                together in one race record.
+              </p>
+            </article>
+            <article class="feature">
+              <div class="icon">A</div>
+              <h3>Analyze deeper</h3>
+              <p>
+                Compare ratings, trends, mistake density, start loss, control types, race quarters
+                and performance highlights.
+              </p>
+            </article>
+            <article class="feature">
+              <div class="icon">P</div>
+              <h3>Control planning</h3>
+              <p>
+                Build a training calendar with categories, intensity, weekly targets, monthly
+                targets and coach suggestions.
+              </p>
+            </article>
+            <article class="feature">
+              <div class="icon">D</div>
+              <h3>Connect data</h3>
+              <p>
+                Treat o-l.ch fixtures, start lists, result lists, IOF XML and Livelox as central
+                sources for orienteering-specific data.
+              </p>
+            </article>
+            <article class="feature">
+              <div class="icon">S</div>
+              <h3>Make statistics visible</h3>
+              <p>
+                Use training, racing, performance, favorite cards and detail views to quickly see
+                where development is happening.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="workflow" class="workflow">
+        <div class="section-inner">
+          <div class="section-heading">
+            <h2>From planning to reflection.</h2>
+            <p>
+              Contoura is not meant to be another loose logbook. It is designed around the weekly
+              workflow ambitious orienteers already follow.
+            </p>
+          </div>
+          <div class="steps">
+            <article class="step">
+              <span class="step-number">1</span>
+              <h3>Plan</h3>
+              <p>Set the training week, load, technical focus and race goals before the work starts.</p>
+            </article>
+            <article class="step">
+              <span class="step-number">2</span>
+              <h3>Collect</h3>
+              <p>Keep maps, links, results, splits, files and notes in the right place.</p>
+            </article>
+            <article class="step">
+              <span class="step-number">3</span>
+              <h3>Evaluate</h3>
+              <p>Compare technique, mental state, running feel, preparation and overall impression.</p>
+            </article>
+            <article class="step">
+              <span class="step-number">4</span>
+              <h3>Learn</h3>
+              <p>Recognize patterns and shape the next session from real insight.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-inner audience">
+          <div class="quote-box">
+            <p>
+              "After every orienteering race I know something. Contoura should make sure I can
+              still use it six weeks later."
+            </p>
+            <span>Product principle for the first validation phase</span>
+          </div>
+          <div class="audience-list">
+            <div class="audience-item">
+              <strong>Ambitious juniors</strong>
+              <span>More structure for training, reflection and season development.</span>
+            </div>
+            <div class="audience-item">
+              <strong>Elite and performance athletes</strong>
+              <span>Clean data for race comparison, mistake analysis and preparation.</span>
+            </div>
+            <div class="audience-item">
+              <strong>Coaches, clubs and squads</strong>
+              <span>Better visibility of suggestions, evaluation backlog and progress.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="onboarding" class="signup">
+        <div class="section-inner">
+          <div>
+            <p class="eyebrow">Early validation</p>
+            <h2>Help shape Contoura around real orienteering workflows.</h2>
+            <p>
+              Sign up if you want to test the idea, give feedback or join the first onboarding
+              conversations. This landing page is intentionally validating demand before the app is
+              built out further.
+            </p>
+          </div>
+          <form action="https://formspree.io/f/xojrdgpg" method="POST">
+            <input type="hidden" name="_subject" value="New Contoura onboarding request" />
+            <input type="hidden" name="source" value="contoura.app landingpage" />
+            <div class="field-grid">
+              <label>
+                Name
+                <input name="name" autocomplete="name" required />
+              </label>
+              <label>
+                Email
+                <input type="email" name="email" autocomplete="email" required />
+              </label>
+            </div>
+            <div class="field-grid">
+              <label>
+                Role in orienteering
+                <select name="role" required>
+                  <option value="">Select</option>
+                  <option>Athlete</option>
+                  <option>Coach</option>
+                  <option>Club / squad</option>
+                  <option>Parent / support</option>
+                  <option>Other role</option>
+                </select>
+              </label>
+              <label>
+                Level
+                <select name="level" required>
+                  <option value="">Select</option>
+                  <option>Beginner</option>
+                  <option>Active club athlete</option>
+                  <option>Regional / junior squad</option>
+                  <option>National / elite</option>
+                  <option>Coach perspective</option>
+                </select>
+              </label>
+            </div>
+            <label>
+              What would be most valuable to you?
+              <textarea
+                name="most_valuable"
+                placeholder="e.g. race preparation, o-l.ch import, Livelox collection, training planning, mistake analysis ..."
+                required
+              ></textarea>
+            </label>
+            <label>
+              Current tools or workarounds
+              <textarea
+                name="current_tools"
+                placeholder="e.g. Excel, Strava, Attackpoint, Notion, paper, nothing ..."
+              ></textarea>
+            </label>
+            <label class="consent">
+              <input type="checkbox" name="consent" value="accepted" required />
+              <span>
+                I agree that my information may be used for Contoura onboarding and product
+                feedback.
+              </span>
+            </label>
+            <button type="submit">Request onboarding</button>
+            <p class="form-note">
+              Submitted through Formspree. Depending on the setup, Formspree may show a short
+              confirmation after submission.
+            </p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>Contoura - contoura.app</span>
+      <span>Orienteering training, race preparation and analysis in validation.</span>
+    </footer>
+  </body>
+</html>
