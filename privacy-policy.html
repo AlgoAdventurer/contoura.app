@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Privacy Policy – Contoura</title>
+  <meta name="description" content="Contoura Privacy Policy – how we collect, use, and protect your data." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:    #0c0c0d;
+      --spark:  #6ee57a;
+      --text:   #f0efe9;
+      --text-2: #c8c7c0;
+      --muted:  #5e5d54;
+      --border: rgba(240,239,233,0.08);
+      --card:   rgba(240,239,233,0.04);
+      --radius: 12px;
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--ink);
+      color: var(--text);
+      line-height: 1.7;
+      min-height: 100svh;
+      min-height: -webkit-fill-available;
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(12,12,13,.80);
+      backdrop-filter: blur(20px) saturate(1.4);
+      -webkit-backdrop-filter: blur(20px) saturate(1.4);
+      border-bottom: 1px solid rgba(255,255,255,.055);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 1040px; margin: 0 auto; padding: .8rem 1.5rem;
+    }
+    .nav-logo {
+      font-size: 1.15rem; font-weight: 800;
+      color: var(--text); letter-spacing: -.05em;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--spark); }
+    .nav-back {
+      display: inline-block;
+      background: transparent; color: var(--muted);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      padding: .42rem 1.1rem;
+      font-size: .8rem; font-weight: 500;
+      text-decoration: none;
+      transition: border-color .18s, color .18s;
+    }
+    .nav-back:hover { border-color: rgba(255,255,255,.2); color: var(--text); }
+
+    .page-header {
+      padding: 4rem clamp(1.25rem, 5vw, 3rem) 2.5rem;
+      border-bottom: 1px solid var(--border);
+      max-width: 760px; margin: 0 auto;
+    }
+    .badge { display: inline-block; background: rgba(110,229,122,0.12); color: var(--spark);
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 999px; margin-bottom: 1rem; }
+    .page-header h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700;
+      letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+    .meta { color: var(--text-2); font-size: 0.9rem; }
+    .meta span { color: var(--muted); margin: 0 8px; }
+
+    .content-wrap { max-width: 760px; margin: 0 auto;
+      padding: 3rem clamp(1.25rem, 5vw, 3rem) 5rem; }
+
+    .section { margin-bottom: 2.5rem; background: var(--card);
+      border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem 2rem; }
+
+    .section h2 { font-size: 1.05rem; font-weight: 600; letter-spacing: -0.01em;
+      margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 10px; }
+    .num { display: inline-flex; align-items: center; justify-content: center;
+      width: 24px; height: 24px; border-radius: 6px;
+      background: rgba(110,229,122,0.1); color: var(--spark);
+      font-size: 0.75rem; font-weight: 700; flex-shrink: 0; }
+
+    .section p { color: var(--text-2); font-size: 0.9375rem; margin-bottom: 0.875rem; }
+    .section p:last-child { margin-bottom: 0; }
+
+    .section ul { list-style: none; margin: 0.5rem 0 0.875rem; padding: 0; }
+    .section ul li { color: var(--text-2); font-size: 0.9375rem;
+      padding: 0.3rem 0 0.3rem 1.25rem; position: relative; }
+    .section ul li::before { content: ''; position: absolute; left: 0; top: 50%;
+      transform: translateY(-50%); width: 5px; height: 5px; border-radius: 50%;
+      background: var(--muted); }
+
+    .section a { color: var(--spark); text-decoration: none;
+      border-bottom: 1px solid rgba(110,229,122,0.3); transition: border-color 0.2s; }
+    .section a:hover { border-color: var(--spark); }
+
+    strong.label { color: var(--text); font-weight: 600; }
+
+    .highlight { background: rgba(110,229,122,0.06); border: 1px solid rgba(110,229,122,0.2);
+      border-radius: 8px; padding: 1rem 1.25rem; margin: 1rem 0; }
+    .highlight p { color: var(--text); font-size: 0.9rem; margin: 0; }
+
+    .glance-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 0.5rem;
+    }
+    .glance-item {
+      background: rgba(240,239,233,0.03); border: 1px solid var(--border);
+      border-radius: 8px; padding: 0.875rem 1rem;
+    }
+    .glance-label {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--spark); margin-bottom: 0.3rem;
+    }
+    .glance-value { font-size: 0.875rem; color: var(--text-2); }
+    .glance-value a { color: var(--spark); text-decoration: none; border-bottom: 1px solid rgba(110,229,122,0.3); }
+
+    .data-table { width: 100%; border-collapse: collapse; margin: 0.75rem 0; font-size: 0.875rem; }
+    .data-table th { text-align: left; padding: 0.6rem 0.875rem; color: var(--text);
+      font-weight: 600; font-size: 0.78rem; letter-spacing: 0.04em; text-transform: uppercase;
+      background: rgba(240,239,233,0.06); border-bottom: 1px solid var(--border); }
+    .data-table td { padding: 0.7rem 0.875rem; color: var(--text-2);
+      border-bottom: 1px solid var(--border); vertical-align: top; font-size: 0.875rem; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .tag { display: inline-block; font-size: 0.7rem; font-weight: 600; padding: 2px 7px;
+      border-radius: 4px; text-transform: uppercase; letter-spacing: 0.04em; }
+    .tag-eu { background: rgba(110,229,122,0.12); color: var(--spark); }
+    .tag-us { background: rgba(240,180,60,0.12); color: #f0b43c; }
+    .tag-ch { background: rgba(120,160,240,0.12); color: #78a0f0; }
+
+    .sub-head { font-size: 0.85rem; font-weight: 600; color: var(--text);
+      margin: 1.25rem 0 0.5rem; }
+
+    footer { border-top: 1px solid var(--border); padding: 2.5rem 0; }
+    .foot-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+      max-width: 1040px; margin: 0 auto; padding: 0 1.5rem;
+    }
+    .foot-logo { font-size: 1rem; font-weight: 800; color: var(--text); letter-spacing: -.05em; text-decoration: none; }
+    .foot-logo span { color: var(--spark); }
+    .foot-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .foot-links a { font-size: .78rem; color: var(--muted); text-decoration: none; transition: color .15s; }
+    .foot-links a:hover, .foot-links a[aria-current="page"] { color: var(--text); }
+    .foot-copy { font-size: .74rem; color: var(--muted); width: 100%; }
+
+    @media (max-width: 600px) {
+      .section { padding: 1.25rem 1.125rem; }
+      .data-table { font-size: 0.8rem; }
+      .data-table th, .data-table td { padding: 0.5rem 0.625rem; }
+      .glance-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Contoura<span>.</span></a>
+    <a href="index.html" class="nav-back">← Back to home</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <span class="badge">Legal</span>
+  <h1>Privacy Policy</h1>
+  <p class="meta">Effective: 13 May 2026 <span>·</span> Last updated: 14 May 2026</p>
+</div>
+
+<div class="content-wrap">
+
+  <!-- AT A GLANCE — EDÖB multi-level information approach -->
+  <div class="section">
+    <h2><span class="num">☰</span> At a Glance</h2>
+    <p>A quick summary of the most important facts. Each item links to the full details below.</p>
+    <div class="glance-grid">
+      <div class="glance-item">
+        <div class="glance-label">Who is responsible</div>
+        <div class="glance-value">Janis Kuhn · Contoura<br /><a href="mailto:privacy@contoura.app">privacy@contoura.app</a></div>
+      </div>
+      <div class="glance-item">
+        <div class="glance-label">Data collected</div>
+        <div class="glance-value"><a href="#sec1">Name, email, orienteering data, usage logs</a></div>
+      </div>
+      <div class="glance-item">
+        <div class="glance-label">Why we collect it</div>
+        <div class="glance-value"><a href="#sec2">To provide the Service and communicate with you</a></div>
+      </div>
+      <div class="glance-item">
+        <div class="glance-label">Third-party services</div>
+        <div class="glance-value"><a href="#sec4">Supabase, Google Fonts, Formspree, Cloudflare, GitHub Pages, Anthropic, Sender.net</a></div>
+      </div>
+      <div class="glance-item">
+        <div class="glance-label">How long we keep it</div>
+        <div class="glance-value"><a href="#sec5">Until account deletion; logs up to 12 months</a></div>
+      </div>
+      <div class="glance-item">
+        <div class="glance-label">Your rights</div>
+        <div class="glance-value"><a href="#sec8">Access, correction, deletion, portability, objection</a></div>
+      </div>
+      <div class="glance-item">
+        <div class="glance-label">Applicable law</div>
+        <div class="glance-value"><a href="#sec12">Swiss nDSG (primary) · EU GDPR (where applicable)</a></div>
+      </div>
+      <div class="glance-item">
+        <div class="glance-label">Supervisory authority</div>
+        <div class="glance-value"><a href="https://www.edoeb.admin.ch" target="_blank" rel="noopener">EDÖB (Switzerland)</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 0 -->
+  <div class="section" id="sec0">
+    <h2><span class="num">0</span> About Contoura &amp; Data Controller</h2>
+    <p>Contoura is an intelligent training and race-analysis platform for orienteering athletes. We are committed to protecting your personal data in accordance with the Swiss Federal Act on Data Protection (nDSG / revDSG, in force since 1 September 2023) and, where applicable, the EU General Data Protection Regulation (GDPR).</p>
+    <div class="highlight"><p>We will never sell your personal data to third parties. We collect only what is necessary to operate and improve the Service.</p></div>
+    <p><strong class="label">Data Controller</strong><br />
+    Janis Kuhn<br />
+    Lindenhofstrasse 9b, 8624 Grüt (Gossau ZH), Switzerland<br />
+    <a href="mailto:privacy@contoura.app">privacy@contoura.app</a> · <a href="https://contoura.app">contoura.app</a></p>
+    <p>For questions about this policy or to exercise your data protection rights, contact us at <a href="mailto:privacy@contoura.app">privacy@contoura.app</a>. We will respond within 30 days.</p>
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="section" id="sec1">
+    <h2><span class="num">1</span> Data We Collect</h2>
+    <p>We collect data you provide directly and data generated automatically when you use the Service or visit our website. The table below specifies what is collected, where it comes from, and whether it is required.</p>
+
+    <table class="data-table">
+      <thead><tr><th>Category</th><th>Data</th><th>Source</th><th>Required?</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong class="label">Account data</strong></td>
+          <td>Name, email address, password hash, role (athlete / coach), performance level</td>
+          <td>Provided by you at registration</td>
+          <td>Required to use the Service</td>
+        </tr>
+        <tr>
+          <td><strong class="label">Waitlist data</strong></td>
+          <td>Name, email, role, level — from the signup form on contoura.app</td>
+          <td>Provided by you voluntarily</td>
+          <td>Voluntary</td>
+        </tr>
+        <tr>
+          <td><strong class="label">Race data</strong></td>
+          <td>IOF XML files, split times, control sequences, event metadata, results</td>
+          <td>Uploaded by you</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td><strong class="label">Training data</strong></td>
+          <td>Session logs, distance, duration, terrain type, technical focus, error type notes</td>
+          <td>Entered by you</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td><strong class="label">GPS tracks</strong></td>
+          <td>GPX files uploaded for route analysis</td>
+          <td>Uploaded by you</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td><strong class="label">External links</strong></td>
+          <td>URLs to third-party services (e.g. Livelox GPS track links) attached to entries</td>
+          <td>Entered by you</td>
+          <td>Optional</td>
+        </tr>
+        <tr>
+          <td><strong class="label">Usage &amp; log data</strong></td>
+          <td>Feature interactions, error logs, IP address, device type, browser version (no persistent personal identifiers beyond session)</td>
+          <td>Collected automatically when you use the Service or visit our website</td>
+          <td>Automatic</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>We do <strong class="label">not</strong> collect health or biometric data, financial credentials, or any sensitive personal data as defined by Art. 5(c) nDSG.</p>
+    <p><strong class="label">Note on IOF XML files:</strong> Race result files produced by third-party event management systems may contain split times, control sequences, and competitor identifiers. We process this data solely to generate your performance analysis and are not responsible for the accuracy of data in files exported by third-party systems.</p>
+    <p><strong class="label">Note on third-party data:</strong> If you upload content containing data about other individuals (e.g. a coach uploading an athlete's files), you are responsible for ensuring you have the required legal basis to do so.</p>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="section" id="sec2">
+    <h2><span class="num">2</span> How We Use Your Data</h2>
+    <ul>
+      <li>Create and manage your account and authenticate you securely.</li>
+      <li>Provide core features: split analysis, training log, progress tracking, and coach tools.</li>
+      <li>Generate AI-powered race insights using the Anthropic Claude API. Your data is sent to Anthropic solely to generate your insight — it is <strong class="label">not</strong> used to train Anthropic's models.</li>
+      <li>Send transactional emails (account verification, password reset) via Sender.net.</li>
+      <li>Send product update and newsletter emails if you have opted in. You may unsubscribe at any time via the link in each email.</li>
+      <li>Monitor platform health, detect errors, and prevent abuse.</li>
+      <li>Process payments when paid plans are introduced (via Stripe).</li>
+      <li>Comply with legal obligations under Swiss law and, where applicable, EU law.</li>
+    </ul>
+    <p>We do not use your data for advertising, behavioural tracking, or profiling beyond the AI race insights described in <a href="#sec7">Section 7</a>.</p>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="section" id="sec3">
+    <h2><span class="num">3</span> Legal Basis for Processing</h2>
+    <p>We process your personal data on the following legal bases under the Swiss nDSG and, where applicable, the EU GDPR:</p>
+    <ul>
+      <li><strong class="label">Contract performance (Art. 31(2)(a) nDSG / Art. 6(1)(b) GDPR)</strong> — processing necessary to provide the Contoura Service you signed up for, including account management, race analysis, and training logs.</li>
+      <li><strong class="label">Legitimate interests (Art. 31(1) nDSG / Art. 6(1)(f) GDPR)</strong> — security monitoring, fraud prevention, platform improvement, and loading web fonts for page rendering. We have assessed that these interests are not overridden by your rights and freedoms.</li>
+      <li><strong class="label">Consent (Art. 31(2)(b) nDSG / Art. 6(1)(a) GDPR)</strong> — marketing emails and optional features. You may withdraw consent at any time without affecting prior processing.</li>
+      <li><strong class="label">Legal obligation (Art. 6(1)(c) GDPR)</strong> — compliance with applicable Swiss and EU law, including financial record-keeping obligations.</li>
+    </ul>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="section" id="sec4">
+    <h2><span class="num">4</span> Third-Party Service Providers</h2>
+    <p>We share data only with the following service providers. Each is bound by their own privacy policy and standard contractual terms, which we have reviewed prior to use. They process data only for the stated purpose and in compliance with applicable data protection law.</p>
+    <p>For transfers to the USA: these are covered by Standard Contractual Clauses (SCCs) approved by the European Commission. Switzerland recognises an equivalent level of protection via the Federal Council's adequacy list (<a href="https://www.fedlex.admin.ch/eli/cc/2022/568/de#annex_1" target="_blank" rel="noopener">fedlex.admin.ch</a>).</p>
+
+    <table class="data-table">
+      <thead><tr><th>Provider</th><th>Purpose</th><th>Data transferred</th><th>Location</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong class="label">Supabase</strong></td>
+          <td>Database, authentication, file storage</td>
+          <td>All user, race, and training data</td>
+          <td><span class="tag tag-eu">EU — Frankfurt</span></td>
+        </tr>
+        <tr>
+          <td><strong class="label">Google Fonts</strong></td>
+          <td>Web font delivery (Inter typeface used across all pages)</td>
+          <td>IP address, browser metadata sent to Google's CDN on each page load</td>
+          <td><span class="tag tag-us">USA — SCCs</span></td>
+        </tr>
+        <tr>
+          <td><strong class="label">GitHub Pages</strong></td>
+          <td>Static website hosting (contoura.app landing page)</td>
+          <td>IP address, browser metadata (standard server logs)</td>
+          <td><span class="tag tag-us">USA — SCCs / Global CDN</span></td>
+        </tr>
+        <tr>
+          <td><strong class="label">Cloudflare</strong></td>
+          <td>DDoS protection, DNS, CDN</td>
+          <td>IP address, request metadata</td>
+          <td><span class="tag tag-us">USA — SCCs</span></td>
+        </tr>
+        <tr>
+          <td><strong class="label">Formspree</strong></td>
+          <td>Waitlist form submission handling</td>
+          <td>Name, email address, role, level</td>
+          <td><span class="tag tag-us">USA — SCCs</span></td>
+        </tr>
+        <tr>
+          <td><strong class="label">Anthropic</strong></td>
+          <td>AI-generated race insights (Claude API)</td>
+          <td>Race &amp; training data (anonymised where possible).</td>
+          <td><span class="tag tag-us">USA — SCCs</span></td>
+        </tr>
+        <tr>
+          <td><strong class="label">Sender.net</strong></td>
+          <td>Transactional &amp; newsletter emails</td>
+          <td>Name, email address</td>
+          <td><span class="tag tag-eu">EU — Lithuania</span></td>
+        </tr>
+        <tr>
+          <td><strong class="label">Namecheap</strong></td>
+          <td>Domain registration</td>
+          <td>Domain-level metadata only</td>
+          <td><span class="tag tag-us">USA — SCCs</span></td>
+        </tr>
+        <tr>
+          <td><strong class="label">Stripe</strong> <em style="color:var(--muted);font-size:0.8rem">(planned)</em></td>
+          <td>Payment processing for future paid plans</td>
+          <td>Payment data handled entirely by Stripe — we never store card numbers</td>
+          <td><span class="tag tag-us">USA — SCCs</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="sub-head">How to limit data transfers to specific third parties</p>
+    <ul>
+      <li><strong class="label">Google Fonts:</strong> You can block requests to Google's font servers using a browser extension such as uBlock Origin, or by enabling your browser's built-in content blocking. Doing so may affect how the page is rendered (a system font will be used as fallback). Legal basis for this transfer: legitimate interest (Art. 31(1) nDSG / Art. 6(1)(f) GDPR).</li>
+      <li><strong class="label">GitHub Pages / Cloudflare:</strong> These process your IP address as part of delivering the website — this is technically necessary for the Service to function and cannot be avoided while using contoura.app.</li>
+      <li><strong class="label">Formspree:</strong> You can choose not to submit the waitlist form. No data is sent to Formspree unless you actively submit the form.</li>
+      <li><strong class="label">Anthropic (AI Insights):</strong> You can opt out of AI-generated insights in your account settings. Opting out does not restrict access to the manual split analysis features.</li>
+      <li><strong class="label">Sender.net (newsletter):</strong> You can unsubscribe at any time via the unsubscribe link in any email. Transactional emails (e.g. password resets) are necessary for the Service and cannot be opted out of while maintaining an account.</li>
+    </ul>
+
+    <p><strong class="label">Third-party links (e.g. Livelox):</strong> The Service allows you to attach external URLs to your entries. We store these URLs as part of your content. When you click such a link, you leave Contoura and are subject to that third party's own privacy policy. We do not transmit any personal data to linked third-party platforms.</p>
+    <p><strong class="label">Links to other websites:</strong> Our website may contain links to third-party websites. We have no control over those sites and are not responsible for their privacy practices. We encourage you to read their privacy policies directly.</p>
+  </div>
+
+  <!-- SECTION 5 -->
+  <div class="section" id="sec5">
+    <h2><span class="num">5</span> Data Retention</h2>
+    <p>We retain personal data only for as long as necessary for the purposes described in this policy or as required by law.</p>
+    <ul>
+      <li><strong class="label">Account &amp; profile data</strong> — retained for the duration of your account, deleted within 30 days of account deletion.</li>
+      <li><strong class="label">Race &amp; training data</strong> — retained for the duration of your account; deleted within 30 days upon account deletion or explicit deletion request.</li>
+      <li><strong class="label">GPS tracks &amp; uploaded files</strong> — retained until you delete them or your account is closed.</li>
+      <li><strong class="label">Usage &amp; log data</strong> — retained for up to 12 months for security and debugging purposes, then deleted or anonymised.</li>
+      <li><strong class="label">Waitlist submissions</strong> — retained until the platform launches publicly or until you request removal, whichever comes first.</li>
+      <li><strong class="label">Financial records</strong> — retained for 10 years as required by Swiss law (OR Art. 958f).</li>
+    </ul>
+    <p>You may request deletion of your data at any time by emailing <a href="mailto:privacy@contoura.app">privacy@contoura.app</a>. Deletions are completed within 30 days, subject to legal retention obligations listed above.</p>
+  </div>
+
+  <!-- SECTION 6 -->
+  <div class="section" id="sec6">
+    <h2><span class="num">6</span> Cookies</h2>
+    <p>Contoura uses only technically necessary cookies. We do <strong class="label">not</strong> use tracking, advertising, or analytics cookies. No cookie consent banner is required under the Swiss nDSG for strictly necessary cookies.</p>
+    <ul>
+      <li><strong class="label">Session cookie</strong> — keeps you logged in. HttpOnly, SameSite=Strict. Expires on browser close or after 30 days if "remember me" is selected.</li>
+      <li><strong class="label">CSRF token</strong> — protects form submissions against cross-site request forgery attacks. Strictly necessary.</li>
+    </ul>
+    <p>You can clear or block cookies at any time in your browser settings. Clearing session cookies will log you out of Contoura. Blocking all cookies may prevent login from working.</p>
+  </div>
+
+  <!-- SECTION 7 -->
+  <div class="section" id="sec7">
+    <h2><span class="num">7</span> AI-Generated Insights &amp; Automated Processing</h2>
+    <p>Contoura uses the Anthropic Claude API to generate automated race insights. This process analyses your split data to assess navigation patterns — which constitutes profiling under Art. 5(f) nDSG and falls within the scope of automated processing under GDPR Art. 22.</p>
+    <p>This profiling is <strong class="label">not</strong> high-risk profiling (Art. 5(g) nDSG) and does not constitute a solely automated decision with legal or similarly significant effects on you within the meaning of GDPR Art. 22(1). AI Insights are informational and supplementary — they do not determine your eligibility for anything, nor are they shared with third parties to make decisions about you.</p>
+    <p>You can opt out of AI-generated insights at any time in your account settings. Opting out does not affect access to the manual split analysis features. Should fully automated decision-making ever be introduced, we will notify you and obtain explicit consent before activating it for your account.</p>
+  </div>
+
+  <!-- SECTION 8 -->
+  <div class="section" id="sec8">
+    <h2><span class="num">8</span> Your Rights &amp; Choices</h2>
+    <p>Under Swiss nDSG (Art. 25–32) and, where applicable, EU GDPR (Art. 15–22), you have the following rights. We fulfil all requests within 30 days at no charge.</p>
+    <ul>
+      <li><strong class="label">Right of access (Art. 25 nDSG / Art. 15 GDPR)</strong> — request a copy of all personal data we hold about you, including information on its source, purpose, and any third parties it has been shared with.</li>
+      <li><strong class="label">Right to rectification (Art. 32 nDSG / Art. 16 GDPR)</strong> — correct inaccurate or incomplete data. You can manage most profile data directly on your Profile page without contacting us.</li>
+      <li><strong class="label">Right to erasure (Art. 32 nDSG / Art. 17 GDPR)</strong> — request deletion of your personal data ("right to be forgotten"), subject to legal retention obligations outlined in <a href="#sec5">Section 5</a>.</li>
+      <li><strong class="label">Right to data portability (Art. 28 nDSG / Art. 20 GDPR)</strong> — receive your data in a machine-readable format (JSON / CSV), or request transfer to another controller.</li>
+      <li><strong class="label">Right to restriction (Art. 18 GDPR)</strong> — limit our processing of your data in certain circumstances (e.g. while a correction request is pending).</li>
+      <li><strong class="label">Right to object (Art. 32 nDSG / Art. 21 GDPR)</strong> — object to processing based on legitimate interests, including profiling for AI insights.</li>
+      <li><strong class="label">Right to withdraw consent</strong> — withdraw consent (e.g. for marketing emails) at any time without affecting prior processing. Use the unsubscribe link in any email or contact <a href="mailto:privacy@contoura.app">privacy@contoura.app</a>.</li>
+      <li><strong class="label">Right not to be subject to solely automated decisions</strong> — as noted in <a href="#sec7">Section 7</a>, our AI features do not produce solely automated decisions with legal effects.</li>
+    </ul>
+
+    <p class="sub-head">Your choices about data processing</p>
+    <ul>
+      <li>Race and training data fields are <strong class="label">optional</strong> — you may use only the features you need.</li>
+      <li>Newsletter and marketing emails: opt in during registration or unsubscribe at any time.</li>
+      <li>AI Insights: opt out in account settings without losing other functionality.</li>
+      <li>Account deletion: you may close your account and request full deletion of your data at any time by emailing <a href="mailto:privacy@contoura.app">privacy@contoura.app</a>.</li>
+    </ul>
+
+    <p>To exercise any of the above rights, email <a href="mailto:privacy@contoura.app">privacy@contoura.app</a> with your request. We may ask you to verify your identity before fulfilling the request.</p>
+    <p><strong class="label">Supervisory authority complaints:</strong> If you are located in Switzerland, you may lodge a complaint with the Swiss Federal Data Protection and Information Commissioner (EDÖB) at <a href="https://www.edoeb.admin.ch" target="_blank" rel="noopener">edoeb.admin.ch</a>. If you are located in an EU member state, you may lodge a complaint with your local data protection authority — a full list is available at <a href="https://www.edpb.europa.eu/about-edpb/about-edpb/members_en" target="_blank" rel="noopener">edpb.europa.eu</a>.</p>
+  </div>
+
+  <!-- SECTION 9 -->
+  <div class="section" id="sec9">
+    <h2><span class="num">9</span> International Users &amp; GDPR</h2>
+    <p>Contoura is operated from Switzerland and is primarily governed by Swiss nDSG. Because we serve users across Europe — including EU member states — we also comply with the EU GDPR to the extent it applies to our processing of EU residents' data.</p>
+    <p><strong class="label">EU-to-Switzerland transfers:</strong> Switzerland is recognised by the European Commission as a country providing an adequate level of data protection (Commission Decision 2000/518/EC, assessed under GDPR Art. 45). No additional safeguards are required for EU-to-Switzerland transfers. For onward transfers to the USA (via Anthropic, Cloudflare, and other providers in <a href="#sec4">Section 4</a>), Standard Contractual Clauses apply.</p>
+    <p><strong class="label">EU data protection authorities:</strong> EU residents have the right to lodge a complaint with their local supervisory authority. You do not need to use Swiss channels. A list of EU DPAs is available at <a href="https://www.edpb.europa.eu/about-edpb/about-edpb/members_en" target="_blank" rel="noopener">edpb.europa.eu</a>.</p>
+    <p><strong class="label">GDPR Art. 27 representative:</strong> Given the current small-scale, beta nature of the Service and the limited, non-systematic nature of EU data processing, we have not yet designated a formal EU representative under GDPR Art. 27. We will assess this requirement as the Service grows and designate a representative if required.</p>
+  </div>
+
+  <!-- SECTION 10 -->
+  <div class="section" id="sec10">
+    <h2><span class="num">10</span> Data Security</h2>
+    <p>We implement appropriate technical and organisational measures (TOMs) as required by Art. 8 nDSG and GDPR Art. 32:</p>
+    <ul>
+      <li>All data in transit is encrypted using TLS 1.3.</li>
+      <li>All data at rest is encrypted using AES-256 (via Supabase).</li>
+      <li>Passwords are hashed using bcrypt (minimum 12 rounds) — never stored in plaintext.</li>
+      <li>Authentication tokens are stored in HttpOnly, SameSite=Strict cookies.</li>
+      <li>Row-Level Security (RLS) ensures each user can only access their own data.</li>
+      <li>CSRF protection is applied to all state-changing API endpoints.</li>
+      <li>Uploaded files are validated using magic bytes verification.</li>
+    </ul>
+    <p><strong class="label">Data breach notification:</strong> In the event of a personal data breach likely to result in a risk to your rights, we will notify the EDÖB without undue delay (Art. 24 nDSG) and, for EU residents, the competent EU supervisory authority within <strong class="label">72 hours</strong> (GDPR Art. 33). For breaches posing a <em>high</em> risk, we will also notify affected users directly, describing the nature of the breach and steps taken to address it. All incidents are documented as required by law.</p>
+  </div>
+
+  <!-- SECTION 11 -->
+  <div class="section" id="sec11">
+    <h2><span class="num">11</span> Children's Privacy</h2>
+    <p>Contoura is available to users aged 13 and above. Users between the ages of 13 and 18 should obtain appropriate parental or guardian consent as required by local law before registering.</p>
+    <p>We do not knowingly collect data from children under 13. If you believe a child under 13 has created an account, please contact <a href="mailto:privacy@contoura.app">privacy@contoura.app</a> and we will delete the account promptly.</p>
+  </div>
+
+  <!-- SECTION 12 — NEW: Applicable Law -->
+  <div class="section" id="sec12">
+    <h2><span class="num">12</span> Applicable Law</h2>
+    <p>This Privacy Policy is governed by the following legal framework:</p>
+    <ul>
+      <li><strong class="label">Swiss Federal Act on Data Protection (nDSG / revDSG)</strong> — primary applicable law, in force since 1 September 2023. Governs all data processing activities carried out by Contoura from Switzerland.</li>
+      <li><strong class="label">EU General Data Protection Regulation (GDPR, Regulation (EU) 2016/679)</strong> — applies to the extent that Contoura processes personal data of individuals located in EU member states, in accordance with Art. 3(2) GDPR.</li>
+      <li><strong class="label">Swiss Code of Obligations (OR)</strong> — governs financial record retention (Art. 958f OR).</li>
+    </ul>
+    <p>In the event of any conflict between Swiss nDSG and EU GDPR requirements, we apply the standard that provides a higher level of protection for the data subject. Disputes arising under this Privacy Policy shall be governed by Swiss law, with jurisdiction in the courts of Zurich, Switzerland, unless mandatory EU consumer law provides otherwise for EU residents.</p>
+  </div>
+
+  <!-- SECTION 13 -->
+  <div class="section" id="sec13">
+    <h2><span class="num">13</span> Changes to This Policy</h2>
+    <p>We may update this Privacy Policy when necessary. The updated date at the top of this page reflects the most recent revision. For material changes that significantly affect your rights or the way we process your data, we will notify you by email at least 14 days before the change takes effect. Continued use of Contoura after a change takes effect constitutes acceptance of the updated policy.</p>
+    <p>Previous versions of this policy are available upon request by emailing <a href="mailto:privacy@contoura.app">privacy@contoura.app</a>.</p>
+  </div>
+
+  <!-- SECTION 14 -->
+  <div class="section" id="sec14">
+    <h2><span class="num">14</span> Contact</h2>
+    <p>
+      <strong class="label">Privacy requests &amp; rights:</strong> <a href="mailto:privacy@contoura.app">privacy@contoura.app</a><br />
+      <strong class="label">General contact:</strong> <a href="mailto:hello@contoura.app">hello@contoura.app</a><br />
+      <strong class="label">Website:</strong> <a href="https://contoura.app">contoura.app</a><br />
+      <strong class="label">Postal address:</strong> Janis Kuhn, Lindenhofstrasse 9b, 8624 Grüt (Gossau ZH), Switzerland
+    </p>
+    <p>
+      <strong class="label">Swiss supervisory authority:</strong> <a href="https://www.edoeb.admin.ch" target="_blank" rel="noopener">edoeb.admin.ch</a> (EDÖB)<br />
+      <strong class="label">EU supervisory authorities:</strong> <a href="https://www.edpb.europa.eu/about-edpb/about-edpb/members_en" target="_blank" rel="noopener">edpb.europa.eu</a>
+    </p>
+  </div>
+
+</div>
+
+<footer>
+  <div class="foot-inner">
+    <a href="index.html" class="foot-logo">Contoura<span>.</span></a>
+    <div class="foot-links">
+      <a href="index.html">Home</a>
+      <a href="privacy-policy.html" aria-current="page">Privacy Policy</a>
+      <a href="terms-of-service.html">Terms of Service</a>
+      <a href="mailto:hello@contoura.app">Contact</a>
+    </div>
+    <p class="foot-copy">© 2026 Contoura · Janis Kuhn</p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Terms of Service – Contoura</title>
+  <meta name="description" content="Contoura Terms of Service – the rules that govern your use of the platform." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:    #0c0c0d;
+      --spark:  #6ee57a;
+      --text:   #f0efe9;
+      --text-2: #c8c7c0;
+      --muted:  #5e5d54;
+      --border: rgba(240,239,233,0.08);
+      --card:   rgba(240,239,233,0.04);
+      --radius: 12px;
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--ink);
+      color: var(--text);
+      line-height: 1.7;
+      min-height: 100svh;
+      min-height: -webkit-fill-available;
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(12,12,13,.80);
+      backdrop-filter: blur(20px) saturate(1.4);
+      -webkit-backdrop-filter: blur(20px) saturate(1.4);
+      border-bottom: 1px solid rgba(255,255,255,.055);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 1040px; margin: 0 auto; padding: .8rem 1.5rem;
+    }
+    .nav-logo {
+      font-size: 1.15rem; font-weight: 800;
+      color: var(--text); letter-spacing: -.05em;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--spark); }
+    .nav-back {
+      display: inline-block;
+      background: transparent; color: var(--muted);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      padding: .42rem 1.1rem;
+      font-size: .8rem; font-weight: 500;
+      text-decoration: none;
+      transition: border-color .18s, color .18s;
+    }
+    .nav-back:hover { border-color: rgba(255,255,255,.2); color: var(--text); }
+
+    .page-header {
+      padding: 4rem clamp(1.25rem, 5vw, 3rem) 2.5rem;
+      border-bottom: 1px solid var(--border);
+      max-width: 760px; margin: 0 auto;
+    }
+    .badge { display: inline-block; background: rgba(110,229,122,0.12); color: var(--spark);
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 999px; margin-bottom: 1rem; }
+    .page-header h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700;
+      letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+    .meta { color: var(--text-2); font-size: 0.9rem; }
+    .meta span { color: var(--muted); margin: 0 8px; }
+
+    .content-wrap { max-width: 760px; margin: 0 auto;
+      padding: 3rem clamp(1.25rem, 5vw, 3rem) 5rem; }
+
+    .section { margin-bottom: 2.5rem; background: var(--card);
+      border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem 2rem; }
+
+    .section h2 { font-size: 1.05rem; font-weight: 600; letter-spacing: -0.01em;
+      margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 10px; }
+    .num { display: inline-flex; align-items: center; justify-content: center;
+      width: 24px; height: 24px; border-radius: 6px;
+      background: rgba(110,229,122,0.1); color: var(--spark);
+      font-size: 0.75rem; font-weight: 700; flex-shrink: 0; }
+
+    .section p { color: var(--text-2); font-size: 0.9375rem; margin-bottom: 0.875rem; }
+    .section p:last-child { margin-bottom: 0; }
+
+    .section ul { list-style: none; margin: 0.5rem 0 0.875rem; padding: 0; }
+    .section ul li { color: var(--text-2); font-size: 0.9375rem;
+      padding: 0.3rem 0 0.3rem 1.25rem; position: relative; }
+    .section ul li::before { content: ''; position: absolute; left: 0; top: 50%;
+      transform: translateY(-50%); width: 5px; height: 5px; border-radius: 50%;
+      background: var(--muted); }
+
+    .section a { color: var(--spark); text-decoration: none;
+      border-bottom: 1px solid rgba(110,229,122,0.3); transition: border-color 0.2s; }
+    .section a:hover { border-color: var(--spark); }
+
+    strong.label { color: var(--text); font-weight: 600; }
+
+    .highlight { background: rgba(110,229,122,0.06); border: 1px solid rgba(110,229,122,0.2);
+      border-radius: 8px; padding: 1rem 1.25rem; margin: 1rem 0; }
+    .highlight p { color: var(--text); font-size: 0.9rem; margin: 0; }
+
+    .warn { background: rgba(240,180,60,0.06); border: 1px solid rgba(240,180,60,0.2);
+      border-radius: 8px; padding: 1rem 1.25rem; margin: 1rem 0; }
+    .warn p { color: #f0b43c; font-size: 0.9rem; margin: 0; }
+
+    footer { border-top: 1px solid var(--border); padding: 2.5rem 0; }
+    .foot-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+      max-width: 1040px; margin: 0 auto; padding: 0 1.5rem;
+    }
+    .foot-logo { font-size: 1rem; font-weight: 800; color: var(--text); letter-spacing: -.05em; text-decoration: none; }
+    .foot-logo span { color: var(--spark); }
+    .foot-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .foot-links a { font-size: .78rem; color: var(--muted); text-decoration: none; transition: color .15s; }
+    .foot-links a:hover, .foot-links a[aria-current="page"] { color: var(--text); }
+    .foot-copy { font-size: .74rem; color: var(--muted); width: 100%; }
+
+    @media (max-width: 600px) {
+      .section { padding: 1.25rem 1.125rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Contoura<span>.</span></a>
+    <a href="index.html" class="nav-back">← Back to home</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <span class="badge">Legal</span>
+  <h1>Terms of Service</h1>
+  <p class="meta">Effective: 13 May 2026 <span>·</span> Last updated: 13 May 2026</p>
+</div>
+
+<div class="content-wrap">
+
+  <div class="section">
+    <h2><span class="num">0</span> Overview</h2>
+    <p>These Terms of Service ("Terms") govern your access to and use of Contoura ("the Service"), an intelligent training and race-analysis platform for orienteering athletes, operated by:</p>
+    <p><strong class="label">Janis Kuhn</strong><br />
+    Lindenhofstrasse 9b, 8624 Grüt (Gossau ZH), Switzerland<br />
+    <a href="mailto:hello@contoura.app">hello@contoura.app</a> · <a href="https://contoura.app">contoura.app</a></p>
+    <p>By creating an account or using any part of the Service, you confirm that you have read, understood, and agreed to these Terms. If you do not agree, do not use the Service.</p>
+    <div class="highlight"><p>These Terms are governed by Swiss law. The exclusive place of jurisdiction for any disputes is Switzerland. EU consumers may also have the right to bring proceedings before their local courts.</p></div>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">1</span> Eligibility</h2>
+    <p>You may use the Service if you are at least <strong class="label">13 years of age</strong>. If you are under 18, you must have the consent of a parent or legal guardian who accepts these Terms on your behalf and takes responsibility for your use of the Service.</p>
+    <p>By using the Service, you represent that:</p>
+    <ul>
+      <li>You are at least 13 years old, or have verifiable parental or guardian consent.</li>
+      <li>You have the legal capacity to enter into a binding agreement.</li>
+      <li>Your use of the Service does not violate any applicable law or regulation.</li>
+    </ul>
+    <p>We reserve the right to suspend or terminate accounts where eligibility requirements are not met.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">2</span> Your Account</h2>
+    <p>To access most features, you need to register for an account. You agree to:</p>
+    <ul>
+      <li>Provide accurate, complete, and up-to-date information during registration.</li>
+      <li>Keep your login credentials confidential and not share them with others.</li>
+      <li>Notify us immediately at <a href="mailto:hello@contoura.app">hello@contoura.app</a> if you suspect unauthorised access to your account.</li>
+      <li>Be responsible for all activity that occurs under your account.</li>
+    </ul>
+    <p>You may not create accounts on behalf of others without their explicit consent, use automated tools to create accounts, or operate more than one account for fraudulent purposes.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">3</span> The Service</h2>
+    <p>Contoura is an all-in-one performance platform built specifically for orienteering athletes and coaches. The Service currently provides the following core features:</p>
+    <ul>
+      <li><strong class="label">Training Log</strong> — record sessions with distance, elevation, map, and a 7-dimension quality rating covering technical, physical, mental, and other aspects of performance.</li>
+      <li><strong class="label">Competition Analysis</strong> — import race results in IOF XML format and receive automated split-by-split breakdowns, performance index, error density, and quarter-course statistics.</li>
+      <li><strong class="label">Race Preparation</strong> — define goals, upload course documents, note the race centre, and build a structured pre-race schedule, all linked to a single competition entry.</li>
+      <li><strong class="label">Statistics Dashboard</strong> — visualise monthly distance trends, quality rating developments, ranking progressions, and training streaks, updated automatically.</li>
+      <li><strong class="label">Training Planner</strong> — drag-and-drop monthly calendar with colour-coded session types, weekly load targets, and an actual-versus-planned comparison view.</li>
+      <li><strong class="label">Livelox Integration</strong> — attach GPS track links to any training or race entry and review route choices alongside written evaluations.</li>
+    </ul>
+    <p>The Service is currently in <strong class="label">closed beta</strong>. Access is granted by invitation only. Once publicly launched, it will be offered as a freemium platform: core features free of charge, with optional paid plans for premium functionality. You will be clearly informed of any costs before being charged.</p>
+    <p>We reserve the right to modify, limit, or discontinue any feature at any time, with reasonable advance notice where practicable.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">4</span> AI-Powered Features</h2>
+    <p>The Service uses the Anthropic Claude API to generate automated race and training insights ("AI Insights"). AI Insights are generated using a third-party API that may be modified, restricted, or discontinued by its provider at any time; we cannot guarantee the permanent availability of AI features. By using features that produce AI Insights, you acknowledge and agree that:</p>
+    <ul>
+      <li>AI Insights are generated automatically and may contain errors, inaccuracies, or omissions, including hallucinations — content that is factually incorrect but plausible-sounding.</li>
+      <li>AI Insights are informational only and do not constitute professional coaching, medical, or training advice.</li>
+      <li>You retain sole responsibility for any decisions you make based on AI Insights.</li>
+      <li>Your data (race splits, training entries) is transmitted to Anthropic solely to generate your insight. See our <a href="privacy-policy.html">Privacy Policy</a> for details.</li>
+    </ul>
+    <div class="warn"><p>Always use your own judgement. AI-generated feedback is a supplement, not a substitute, for qualified coaching.</p></div>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">5</span> Your Content</h2>
+    <p>You retain full ownership of all data, files, and content you upload to the Service ("Your Content"), including IOF XML files, GPS tracks, training entries, and annotations.</p>
+    <p>By uploading Your Content, you grant Contoura a limited, non-exclusive, royalty-free licence to store, process, and display Your Content solely for the purpose of providing the Service to you. This licence ends when you delete the content or close your account.</p>
+    <p>You represent and warrant that:</p>
+    <ul>
+      <li>You own or have the necessary rights to upload Your Content.</li>
+      <li>Your Content does not infringe any third-party intellectual property, privacy, or other rights.</li>
+      <li>Your Content does not contain malicious code, spam, or illegal material.</li>
+    </ul>
+    <p><strong class="label">Third-party data:</strong> If you upload content that includes data relating to other individuals — for example, a coach uploading an athlete's race files or training entries — you are solely responsible for ensuring that you have obtained any necessary consent from those individuals and that the upload complies with applicable data protection law, including the Swiss nDSG and, where applicable, the EU GDPR. We are not responsible for unlawful processing of third-party data resulting from your uploads.</p>
+    <p>We do not claim ownership of Your Content and will not use it for any purpose beyond operating the Service.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">6</span> Acceptable Use</h2>
+    <p>You agree not to use the Service to:</p>
+    <ul>
+      <li>Violate any applicable Swiss or international law or regulation.</li>
+      <li>Upload, share, or transmit content that is unlawful, defamatory, abusive, or harmful.</li>
+      <li>Attempt to gain unauthorised access to any part of the Service or its infrastructure.</li>
+      <li>Reverse-engineer, decompile, or otherwise attempt to extract source code.</li>
+      <li>Scrape, crawl, or use automated tools to extract data from the Service without our prior written consent.</li>
+      <li>Impersonate another person or organisation.</li>
+      <li>Interfere with or disrupt the integrity or performance of the Service.</li>
+      <li>Use the Service for commercial purposes other than those explicitly permitted.</li>
+    </ul>
+    <p>Violations may result in immediate account suspension or termination without notice.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">7</span> Intellectual Property</h2>
+    <p>All intellectual property rights in the Service — including its design, code, branding, and original content — belong to Janis Kuhn or are used under licence. Nothing in these Terms transfers any such rights to you.</p>
+    <p>The Contoura name, logo, and visual identity are proprietary. You may not use them without prior written permission.</p>
+    <p>Your Content remains yours. The limited licence described in Section 5 does not grant us any ownership over it.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">8</span> Affiliations and Data Accuracy</h2>
+    <p><strong class="label">No Affiliation:</strong> Contoura is an independent platform and is not affiliated with, endorsed by, or in any way officially connected with the International Orienteering Federation (IOF), any national orienteering federation, the operators of IOF Eventor, Livelox, or the organisers of any events featured in the Service. All trademarks and logos remain the property of their respective owners.</p>
+    <p><strong class="label">Third-Party Data Accuracy:</strong> Race results and competition data are imported by users directly from IOF-format XML files. While we process this data faithfully, we cannot guarantee its accuracy, completeness, or timeliness, as it originates from third-party event systems outside our control. We are not liable for errors or omissions in data sourced from or formatted by third parties.</p>
+    <p><strong class="label">Third-Party Links:</strong> The Service allows you to attach external links, such as Livelox GPS track URLs, to training and race entries. Clicking these links takes you to third-party platforms governed by their own terms and privacy policies. We have no control over and assume no responsibility for the content, accuracy, or practices of any linked third-party service.</p>
+    <div class="highlight"><p>Performance scores and statistics generated by Contoura are tools for personal development only. They are not an objective judgment of any athlete's real-world ability or worth.</p></div>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">9</span> Availability &amp; Changes to the Service</h2>
+    <p>We aim to provide a reliable service but cannot guarantee uninterrupted availability. The Service may be temporarily unavailable due to maintenance, technical issues, or circumstances beyond our control.</p>
+    <p><strong class="label">Force Majeure:</strong> We shall not be liable for any failure or delay in providing the Service caused by circumstances beyond our reasonable control, including but not limited to: acts of God, internet or infrastructure outages, failures at third-party service providers (such as Supabase or Anthropic), cyberattacks, regulatory changes, or any other event constituting force majeure under Swiss law. We will make reasonable efforts to restore the Service as promptly as possible in such circumstances.</p>
+    <p>We may update, expand, or remove features at any time. Where a change significantly affects your use, we will make reasonable efforts to give advance notice on the website or by email.</p>
+    <p>We reserve the right to suspend or shut down the Service, in whole or in part, with reasonable notice where possible.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">10</span> Payments &amp; Billing</h2>
+    <p>Paid plans are not yet active. When they become available:</p>
+    <ul>
+      <li>Payments will be processed securely via <strong class="label">Stripe</strong>. Contoura does not store your payment card details.</li>
+      <li>Prices and plan details will be clearly displayed before you commit to a purchase.</li>
+      <li>Subscription fees are billed in advance and are generally non-refundable, except where required by applicable law or as stated in the specific plan terms.</li>
+      <li>We will notify you of price changes at least 30 days in advance.</li>
+    </ul>
+    <p><strong class="label">Right of withdrawal for EU consumers:</strong> If you are a consumer residing in the EU or EEA, you have the right to withdraw from a paid subscription contract within <strong class="label">14 days</strong> of purchase without giving any reason, in accordance with the EU Consumer Rights Directive (2011/83/EU). To exercise this right, contact us at <a href="mailto:hello@contoura.app">hello@contoura.app</a> within the 14-day period. <em>Exception:</em> If you expressly request that the Service begins immediately upon purchase and acknowledge that you thereby lose your right of withdrawal, the right of withdrawal is forfeited. We will ask for this acknowledgement at the point of purchase before any paid plan takes effect.</p>
+    <p>Questions about billing can be sent to <a href="mailto:hello@contoura.app">hello@contoura.app</a>.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">11</span> Disclaimer of Warranties</h2>
+    <p>The Service is provided <strong class="label">"as is"</strong> and <strong class="label">"as available"</strong> without warranties of any kind, express or implied, including but not limited to fitness for a particular purpose, accuracy of AI Insights, or uninterrupted access.</p>
+    <p>We do not warrant that the Service will meet your specific requirements or that results obtained from AI features will be accurate, complete, or suitable for any particular training or competition decision. The Service is not a substitute for professional coaching, sports science, or medical advice.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">12</span> Limitation of Liability</h2>
+    <p>To the maximum extent permitted under applicable Swiss law, Contoura (Janis Kuhn) shall not be liable for any indirect, incidental, consequential, or special damages arising out of or in connection with your use of the Service, including but not limited to loss of data, loss of profits, or decisions made based on AI-generated insights.</p>
+    <div class="highlight"><p>In accordance with Art. 100 of the Swiss Code of Obligations (OR), liability for damages caused by intent or gross negligence cannot be excluded or limited. Nothing in these Terms affects your statutory rights.</p></div>
+    <p>Our total aggregate liability for any claim arising under these Terms shall not exceed the amount you paid to us in the twelve months preceding the claim, or CHF 100 if no payments have been made. <strong class="label">EU consumers:</strong> To the extent that mandatory consumer protection law in your country of residence provides for a higher or different liability standard, that mandatory standard applies and the CHF 100 cap shall not apply to you.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">13</span> Indemnification</h2>
+    <p>You agree to indemnify and hold harmless Janis Kuhn from and against any claims, damages, losses, costs, or expenses (including reasonable legal fees) arising from:</p>
+    <ul>
+      <li>Your violation of these Terms.</li>
+      <li>Your Content, including any claim that it infringes third-party rights or violates applicable data protection law.</li>
+      <li>Your upload of data relating to third parties without the required consents.</li>
+      <li>Your use of the Service in a manner that causes harm to another person.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">14</span> Termination</h2>
+    <p>You may close your account at any time by contacting us at <a href="mailto:hello@contoura.app">hello@contoura.app</a>. Upon account closure, your personal data will be deleted in accordance with our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+    <p>We may suspend or terminate your account with or without notice if:</p>
+    <ul>
+      <li>You breach these Terms.</li>
+      <li>We are required to do so by law.</li>
+      <li>Your account has been inactive for an extended period and you did not respond to our reactivation notice.</li>
+    </ul>
+    <p><strong class="label">Assignment:</strong> We may transfer or assign these Terms or our rights and obligations under them — for example, in the event of a merger, acquisition, or sale of assets — to a third party. We will provide you with reasonable advance notice of any such transfer. Your continued use of the Service following the transfer constitutes your acceptance. If you do not accept the transfer, you may close your account before it takes effect at no penalty to you.</p>
+    <p>Sections 5 (Your Content), 7 (Intellectual Property), 12 (Limitation of Liability), 13 (Indemnification), and 15 (Governing Law) survive termination of your account or these Terms.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">15</span> Governing Law &amp; Jurisdiction</h2>
+    <p>These Terms are governed by and construed in accordance with the laws of <strong class="label">Switzerland</strong>, without regard to conflict-of-law principles.</p>
+    <p>Any dispute arising out of or in connection with these Terms shall be subject to the exclusive jurisdiction of the competent courts of <strong class="label">Switzerland</strong>.</p>
+    <p>If you are a consumer residing in the EU, you may also have the right to bring proceedings in the courts of your country of residence and to benefit from any mandatory consumer protection provisions that apply in your country under applicable EU law, which these Terms do not override.</p>
+    <p><strong class="label">Online Dispute Resolution (EU):</strong> The European Commission provides an Online Dispute Resolution (ODR) platform for resolving disputes arising from online contracts between traders and consumers. Our contact address for ODR purposes is <a href="mailto:hello@contoura.app">hello@contoura.app</a>. We are not obliged to participate in ADR proceedings but will make reasonable efforts to resolve disputes directly.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">16</span> General Provisions</h2>
+    <p><strong class="label">Severability:</strong> If any provision of these Terms is found by a competent court or authority to be invalid, unlawful, or unenforceable, that provision will be limited or removed to the minimum extent necessary so that the remaining provisions of these Terms remain in full force and effect.</p>
+    <p><strong class="label">Entire Agreement:</strong> These Terms, together with our <a href="privacy-policy.html">Privacy Policy</a>, constitute the entire agreement between you and Contoura with respect to the Service and supersede all prior and contemporaneous understandings, agreements, representations, or warranties, whether written or oral, regarding the Service.</p>
+    <p><strong class="label">Waiver:</strong> Our failure to enforce any right or provision of these Terms on any occasion does not constitute a waiver of that right or provision. A waiver will only be effective if made in writing and signed by an authorised representative of Contoura.</p>
+    <p><strong class="label">No Agency:</strong> Nothing in these Terms creates any partnership, joint venture, employment, or agency relationship between you and Contoura. You may not enter into any contract or create any obligation on our behalf.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">17</span> Changes to These Terms</h2>
+    <p>We may update these Terms at any time. Changes take effect <strong class="label">immediately upon publication</strong> on this page. The "Last updated" date at the top of this document will always reflect the most recent revision.</p>
+    <p>For material changes — those that significantly affect your rights or obligations — we will notify you by email at least 14 days before they take effect.</p>
+    <p>Your continued use of the Service after any update constitutes your acceptance of the revised Terms. If you do not agree with a change, you should stop using the Service and may close your account.</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="num">18</span> Contact</h2>
+    <p>Questions or concerns about these Terms? We're happy to help.</p>
+    <p>
+      <strong class="label">Janis Kuhn</strong><br />
+      Lindenhofstrasse 9b, 8624 Grüt (Gossau ZH), Switzerland<br />
+      General enquiries: <a href="mailto:hello@contoura.app">hello@contoura.app</a><br />
+      Privacy matters: <a href="mailto:privacy@contoura.app">privacy@contoura.app</a><br />
+      Website: <a href="https://contoura.app">contoura.app</a>
+    </p>
+  </div>
+
+</div>
+
+<footer>
+  <div class="foot-inner">
+    <a href="index.html" class="foot-logo">Contoura<span>.</span></a>
+    <div class="foot-links">
+      <a href="index.html">Home</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-service.html" aria-current="page">Terms of Service</a>
+      <a href="mailto:hello@contoura.app">Contact</a>
+    </div>
+    <p class="foot-copy">© 2026 Contoura · Janis Kuhn</p>
+  </div>
+</footer>
+
+</body>
+</html>

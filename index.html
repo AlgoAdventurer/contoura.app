@@ -365,6 +365,37 @@
       transition: opacity .15s, transform .12s;
     }
     .btn-submit:hover { opacity: .88; transform: translateY(-1px); }
+    .f-consent { margin-bottom: .75rem; }
+    .consent-label {
+      display: flex; align-items: flex-start; gap: .6rem;
+      cursor: pointer;
+    }
+    .consent-label input[type="checkbox"] {
+      appearance: none; -webkit-appearance: none;
+      width: 16px; height: 16px; min-width: 16px;
+      border: 1px solid var(--line-mid);
+      border-radius: 4px;
+      background: var(--ink-2);
+      margin-top: .18rem;
+      cursor: pointer;
+      transition: background .15s, border-color .15s;
+    }
+    .consent-label input[type="checkbox"]:checked {
+      background: var(--spark);
+      border-color: var(--spark);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='8' viewBox='0 0 10 8'%3E%3Cpath d='M1 4l3 3 5-6' stroke='%230c0c0d' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    .consent-label input[type="checkbox"]:focus-visible {
+      outline: 2px solid rgba(110,229,122,.4); outline-offset: 2px;
+    }
+    .consent-label span {
+      font-size: .75rem; color: var(--muted); line-height: 1.5;
+    }
+    .consent-label span a {
+      color: var(--spark); text-decoration: underline; text-underline-offset: 2px;
+    }
     .form-fine {
       text-align: center;
       font-size: .7rem; color: var(--dim);
@@ -610,6 +641,12 @@
               </div>
             </div>
             <input type="hidden" name="_subject" value="New Contoura Waitlist Signup" />
+            <div class="f-consent">
+              <label class="consent-label">
+                <input type="checkbox" name="consent" required />
+                <span>I have read and agree to the <a href="terms-of-service.html" target="_blank">Terms of Service</a> and <a href="privacy-policy.html" target="_blank">Privacy Policy</a>.</span>
+              </label>
+            </div>
             <button type="submit" class="btn-submit">Join the Waitlist →</button>
             <p class="form-fine">No spam. We'll only contact you about Contoura.</p>
           </form>
@@ -623,16 +660,26 @@
     </div>
   </div>
 </section>
+<!-- ── CONTACT ────────────────────────────────────────────────────────────── -->
+<section class="section" id="contact" style="padding-top:0">
+  <div class="wrap" style="text-align:center;max-width:560px;">
+    <h2 style="margin-bottom:.75rem">Get in touch.</h2>
+    <p style="margin-bottom:2rem;font-size:1rem;line-height:1.7">Questions or feedback?</p>
+    <a href="mailto:hello@contoura.app" class="btn-primary">hello@contoura.app</a>
+  </div>
+</section>
 <!-- ── FOOTER ─────────────────────────────────────────────────────────────── -->
 <footer>
   <div class="foot-inner">
     <div class="foot-logo">Contoura<span>.</span></div>
     <div class="foot-links">
-      <!--<a href="mailto:hello@contoura.app">Contact</a>-->
       <a href="#features">Features</a>
       <a href="#waitlist">Waitlist</a>
+      <a href="#contact">Contact</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-service.html">Terms of Service</a>
     </div>
-    <p class="foot-copy">© 2026 Contoura</p>
+    <p class="foot-copy">© 2026 Contoura · Janis Kuhn</p>
   </div>
 </footer>
 <script>
